@@ -5,7 +5,7 @@
     </a>
 </div>
 <a href="https://telegram.me/titanteams"><font size="100">tabchi v.1</font></a>
-<h3><p dir="rtl">سورسی کاملا فارسی در زمینه تیجی های جدید :)
+<h3><p dir="rtl">✨تبچی خودت رو بساز ;)
 <br>
 <h3 align="right"> <strong></strong>
 </h3>
