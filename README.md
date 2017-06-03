@@ -36,8 +36,8 @@ chmod +x bot
 ./bot create
 ./bot number of bot >> شماره رباتی که به شما میدهد
 ```
-
 * * *
+## اتولانچ [راه اندازی همه]
 
 # Support and Development
 
