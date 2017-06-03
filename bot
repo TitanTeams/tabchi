@@ -1,0 +1,268 @@
+#!/usr/bin/env bash
+
+## VARIABLES
+THIS_DIR=$(cd "$(dirname "$0")"; pwd)
+TDCLI='https://valtman.name/files/telegram-cli-1222'
+
+## Print Colorful
+# Print text in red
+prtred() {
+  printf '\e[1;31m%s\n\e[0;39;49m' "$@"
+}
+# Print text in green
+prtgrn() {
+  printf '\e[1;32m%s\n\e[0;39;49m' "$@"
+}
+# Print text in brown
+prtbrown() {
+  printf '\e[1;33m%s\n\e[0;39;49m' "$@"
+}
+# update data to the last version
+update() {
+  git fetch --all && git reset --hard origin/persian && git pull origin persian && chmod +x bot
+    prtgrn "
+      بروزرسانی اطلاعات با موفقیت انجام شد <<
+  >> Bot's source successfully updated
+"
+}
+# Create a new Bot
+create() {
+  name=bot
+  if [[ -e $name.lua ]] ; then
+      i=1
+      while [[ -e $name-$i.lua ]] ; do
+          let i++
+      done
+      name=$name-$i
+  fi
+  cat bot.lua >> "$name".lua
+  sed -i 's/BOT-ID/'$i'/g' "$name".lua
+    prtgrn "
+     ربات شماره "$i" ساخته شد <<
+  : رباتتان را با فرمان زیر اجرا کنید
+>> new bot seccessfuly created
+       bot number "$i"
+      run your bot by :"
+prtred "
+       ./bot "$i"
+"
+}
+# Create a new Bot manually
+createmanual() {
+   prtgrn '
+        برای ساخت ربات با شماره دلخواه، شماره دلخواه خود را وارد کنید <<
+  >> To creating a new bot manually, Inter the BOT-ID :
+'
+  read -rp ' ' ID
+    if [[ -e bot-"$ID".lua ]] ; then
+      prtred '
+     شماره ربات وارد شده از قبل وجود دارد <<
+  >> There is a bot with this number ID
+'
+      exit
+    else
+      if [[ "$ID" =~ ^[0-9]+$ ]] ; then
+        cat bot.lua >> bot-"$ID".lua
+        sed -i 's/BOT-ID/'$ID'/g' bot-"$ID".lua
+        prtgrn "
+     ربات شماره "$ID" ساخته شد <<
+    : رباتتان را با فرمان زیر اجرا کنید
+  >> new bot seccessfuly created
+       bot number "$ID"
+      run your bot by :"
+        prtred "
+             ./bot "$ID"
+      "
+      else
+        prtred "
+     شماره ربات را وارد کنید -- عدد
+  Inter the bot number --integer
+    "
+        exit
+      fi
+    fi
+}
+# Reset data to the last update
+fix() {
+  git reset --hard FETCH_HEAD
+  prtgrn '
+  بازیابی اطلاعات به آخرین آپدیت انجام شد <<
+  >> Database Reseted and Fixed
+'
+}
+# autolauncher
+autolaunch() {
+  while true ; do
+    for tablighgar in bot-*.lua ; do
+      tab="${tablighgar%.*}"
+      ltab="${tab/-/ }"
+      tmux kill-session -t $tab
+      for tg in ~/.telegram-cli/$tab/data/* ; do
+        rm -rf $tg/*
+      done
+      TMUX= tmux new-session -d -s $tab "./$ltab"
+      tmux detach -s $tab
+    done
+    echo -e " \n\e[1;32mربات ها راه اندازی شدند << \e[1;34m| @titanteams |\e[1;32m>> Bots are Running\n\e[0;39;49m"
+    sleep 1200
+  done 
+}
+# clear a bot
+clear() {
+  sudo service redis-server start
+  prtgrn '
+       : شماره شناسه تبچی که می‌خواهید پاک کنید را وارد کنید  <<
+  >> Inter the BOT-ID,that you wanna delete :
+'
+  read -rp ' ' ID
+  rm -rf ~/.telegram-cli/bot-"$ID"/data
+  rm -rf bot-"$ID".lua
+  redis-cli --raw keys "bot"$ID* | xargs redis-cli del
+  prtgrn '
+     ربات شماره '$ID' با موفقیت حذف شد <<
+  >> Bot number '$ID' seccessfuly deleted.
+'
+  exit
+}
+# install Bot
+install() {
+  prtgrn '
+         آیا قصد نصب پیش نیاز های ربات تبچی را دارید؟ بله|خیر <<
+  >> Do you want to install Essentials of Bot? (Y/N):
+'
+  read -rp ' ' install
+  case "$install" in
+    Y|y|بله)
+      prtgrn "
+         telegram-cli بارگیری <<
+ >> Fetching $TDCLI
+"
+      wget "$TDCLI" -O telegram-cli
+      chmod +x telegram-cli
+      prtgrn "
+     ارتقای اطلاعات قدیمی <<
+ >> Updating old packages
+"
+      sudo apt-get -y update && sudo apt-get -y upgrade 
+      prtgrn "
+        نصب بسته های پیش نیازی <<
+ >> Installing Essentials packages
+"
+      sudo apt-get --force-yes install git wget screen tmux libconfig9 libevent-dev libjansson4 libstdc++6 lua-socket lua5.2 liblua5.2 make unzip redis-server software-properties-common g++
+      sudo apt-get -y update && sudo apt-get -y upgrade
+      sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test && sudo apt-get update && sudo apt-get install -y gcc-4.9 g++-4.9 && sudo update-alternatives —install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 —slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+      prtgrn "
+ ارتقای بسته های نصب شده <<
+ >> Updating packages
+"
+      sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove
+      prtgrn "
+      redis راه اندازی مجدد  <<
+ >> Restarting redis service
+"
+      sudo service redis-server restart
+      prtgrn '
+      همگام سازی با جدیدترین نسخه تبچی << 
+ >> Fetching latest Bot source code
+ '
+      git pull
+      prtgrn '
+      نصب پیش نیاز های ربات  تبچی با موفقیت انجام شد << 
+ >> Essentials of Tabchi Bot successfully installed!
+ '
+      printf '\e[1;33mبسازید\e[1;32m ./bot create \e[1;33mربات تبچی خود را با دستور <<\e[1;33m%s\n >>Create Your bot with\e[1;32m ./bot create\e[0;39;49m%s\n'
+    ;;
+    N|n|خیر)
+      prtbrown '
+        لغو عملیات
+ Canceling the operation
+ '
+    ;;
+    *)
+      prtred '
+    دستور اشتباه
+  Wrong command
+ '
+      install
+    ;;
+  esac
+}
+# How to use this script
+usage() {
+printf "\e[1;36m"
+  cat <<EOF
+  
+                    $0 [موارد استفاده  : [گزینه ها <<
+                                        : گزینه ها
+        شماره             راه اندازی ربات با این شماره 
+  راه‌اندازی انتی کرش ربات‌با‌این‌شماره            aشماره
+   بازیابی اطلاعات از اخرین بروزرسانی             fix
+    نصب پیش نیاز های ربات تبچی           install
+      بروزرسانی به آخرین نسخه ربات            update
+                 ساخت ربات جدید           create
+       ساخت ربات جدید بصورت دستی        createmanual
+                   نمایش این متن            help
+   راه‌اندازی تمام ربات ها هر 20 دقیقه          autolaunch
+                  
+>> Usage: $0 [options]
+    Options:
+      createmanual      Create a new Bot manually
+      autolaunch        Launch all bots every 20 mins
+      NUMBER            Start bot whit this ID number
+      aNUMBER           Start bot whit this ID number in anticrash mod
+      install           Install of Bot
+      create            Create a new Bot
+      update            Update bot source code
+      help              Print this message
+      fix               Reseting data
+EOF
+printf "%s\n\e[0;39;49m"
+}
+## MAIN ------------------------------------------------------------------------
+# Make sure this script run inside Bot directory
+cd "$THIS_DIR" || exit
+case $1 in
+  update)
+    update
+  ;;
+  create)
+    create
+  ;;
+  install)
+    install
+  ;;
+  fix)
+    fix
+  ;;
+  autolaunch)
+    autolaunch
+  ;;
+  help)
+    usage
+  ;;
+  createmanual)
+    createmanual
+  ;;
+  a*)
+    id="${1/a/}"
+    if [ -a "$THIS_DIR"/bot-"$id".lua ]; then
+      screen -x -s bot-"$id" quit
+      while true ; do
+        screen -s bot-"$id" ./telegram-cli -p bot-"$id" -s bot-"$id".lua
+        sleep 10
+      done
+    else
+      usage
+    fi
+  ;;
+  clr)
+    clear
+  ;;
+  *)
+    if [ -a "$THIS_DIR"/bot-"$1".lua ]; then
+      ./telegram-cli -p bot-"$1" -s bot-"$1".lua
+    else
+    usage
+    fi
+  ;;
+esac
