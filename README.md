@@ -1,7 +1,7 @@
 <p 
     <div align="center">
     <a href="https://telegram.me/titanteams">
-        <img src="http://uupload.ir/files/qwsh_43923re-o3vbax.jpg" hspace="300" width="300">
+        <img src="http://uupload.ir/files/qwsh_43923re-o3vbax.jpg" hspace="300" width="400">
     </a>
 </div>
 <a href="https://telegram.me/titanteams"><font size="100">parsol.v3</font></a>
