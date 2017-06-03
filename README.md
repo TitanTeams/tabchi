@@ -8,7 +8,7 @@
 ### دستورات
 
 
-| [/]help | راهنما  |
+| [#!/]help | راهنما  |
 
 You can use "#", "!", or "/" to begin all commands
 
