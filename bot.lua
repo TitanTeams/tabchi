@@ -443,7 +443,7 @@ function get_bot (i, adigram)
                                               },
                                             },
                                             }, dl_cb, nil)
-                                        return send (msg.chat_id_, msg.id_, "<code>Contact added...</code>")
+                                        return send (msg.chat_id_, msg.id_, "<code>مخاطب به لیست مخاطب های من افزوده شد✔️</code>\n➖➖➖\n🚀کانال ما : @TitanTeams\n😉سازنده : @mohammadrezajiji")
                                       end
                                     elseif msg.content_.ID == "MessageChatDeleteMember" and msg.content_.id_ == bot_id then
                                       return rem(msg.chat_id_)
