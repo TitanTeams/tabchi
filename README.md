@@ -22,7 +22,7 @@ cd tabchi
 chmod +x bot
 ./bot install
 * * *
-```sh
+```
 # For Auto Launch:
 cd BDReborn
 chmod 777 autobd.sh
