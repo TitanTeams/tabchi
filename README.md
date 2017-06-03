@@ -14,9 +14,6 @@
 <h6>| راهنما | , ...</h6>
 <hr>
 <h3 align="right"> <strong>نصب</strong> 🚀
-<h4 dir="rtl">نصب ربات(روش اول)
-<br></h4>
-<h6 dir="rtl"></h6>
 <pre>
 <span>cd $HOME</span>
 <span>git clone https://github.com/mohammadrezatitan/parsol.git</span>
