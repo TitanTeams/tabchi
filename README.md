@@ -49,7 +49,7 @@ cd tabchi
 ***
 ### اموزش ها
 
-[اموزش کامل نصب](https://telegram.me/TitanTeams/677)
+[اموزش کامل نصب](https://telegram.me/TitanTeams/67)
 
 ### Developers
 [mohammadrezajiji](https://telegram.me/mohammadrezajiji)
