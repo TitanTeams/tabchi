@@ -29,36 +29,29 @@ chmod +x bot
 ./bot create
 ./bot 1
 وارد کردن ایدی عددی سودو#
+وارد کردن شماره ربات#
 ```
 ## ساخت ربات های بیش تر
 
 ```sh
+cd tabchi
 ./bot create
 ./bot number of bot >> شماره رباتی که به شما میدهد
+وارد کردن ایدی عددی سودو#
+وارد کردن شماره ربات#
 ```
 * * *
-## اتولانچ [راه اندازی همه]
+## اتولاچ
+```sh
+cd tabchi
+./bot autolaunch
+تمام ربات ها راه اندازی میشوند بدون خاموشی#
+```
+### اموزش ها
 
-# Support and Development
+[اموزش کامل نصب](https://telegram.me/titanteams)
 
-More information [Beyond Global Chat](https://telegram.me/joinchat/AAAAAEIDQ8HTjezV4syUSA)
-
-# Special thanks to
-[@MrHalix](https://github.com/MrHalix)
-
-[@Vysheng](https://github.com/vysheng)
-
-* * *
-
-# Developers!
-
-[SoLiD](https://github.com/solid021) ([Telegram](https://telegram.me/SoLiD))
-
-[To0fan](https://github.com/To0fan) ([Telegram](https://telegram.me/ToOfan))
-
-[MAKAN](https://github.com/makanj) ([Telegram](https://telegram.me/MAKAN))
-
-
-### Our Telegram channel:
-
-[@BeyondTeam](https://telegram.me/BeyondTeam)
+### Developers
+[mohammadrezajiji](https://telegram.me/mohammadrezajiji)
+### channel
+[TitanTeam](https://telegram.me/titanteams)
