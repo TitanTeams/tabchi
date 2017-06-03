@@ -1,32 +1,28 @@
-# [Tabchi | v.1)](https://telegram.me/Titanteams)
+# [Tabchi | v.1](https://telegram.me/Titanteams)
 
 تبچی خودت رو بساز ;)
 
 
 * * *
 
-## Commands
+## دستورات
 
-| Use help |
-|:--------|:------------|
-| [#!/]help | just send help in your group and get the commands |
 
-**You can use "#", "!", or "/" to begin all commands
+| [/]help | راهنما  |
+
+You can use "#", "!", or "/" to begin all commands
 
 * * *
 
-# Installation
+# نصب
 
 ```sh
-# Let's install the bot.
-cd $HOME
-git clone https://github.com/BeyondTeam/BDReborn.git
-cd BDReborn
-chmod +x beyond.sh
-./beyond.sh install
-./beyond.sh 
-# Enter a phone number & confirmation code.
-
+git clone https://github.com/titanteams/tabchi
+cd tabchi
+chmod +x bot
+./bot install
+* * *
+```sh
 # For Auto Launch:
 cd BDReborn
 chmod 777 autobd.sh
