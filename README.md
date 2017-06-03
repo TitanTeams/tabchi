@@ -21,21 +21,20 @@ git clone https://github.com/titanteams/tabchi
 cd tabchi
 chmod +x bot
 ./bot install
-در ادامه در هرقسمتی که از شما y , n خواست y را وارد کنید
+# and send [y] to finish install
 ```
-# For Auto Launch:
-cd BDReborn
-chmod 777 autobd.sh
-screen ./autobd.sh
+
+# بعد از نصب [ساخت ربات[
 ```
-### One command
-To install everything in one command, use:
+./bot create
+./bot 1
+وارد کردن ایدی عددی سودو#
+```
+# ساخت ربات های بیش تر
+
 ```sh
-cd $HOME && git clone https://github.com/BeyondTeam/BDReborn.git && cd BDReborn && chmod +x beyond.sh && ./beyond.sh install && ./beyond.sh
-
-OR
-
-cd $HOME && git clone https://github.com/BeyondTeam/BDReborn.git && cd BDReborn && chmod +x beyond.sh && ./beyond.sh install && chmod 777 autobd.sh && screen ./autobd.sh
+./bot create
+./bot number of bot >> شماره رباتی که به شما میدهد
 ```
 
 * * *
