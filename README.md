@@ -4,7 +4,7 @@
         <img src="http://uupload.ir/files/qwsh_43923re-o3vbax.jpg" hspace="300" width="300">
     </a>
 </div>
-<a href="https://telegram.me/titanteams"><font size="100">tabchiv.1</font></a>
+<a href="https://telegram.me/titanteams"><font size="100">tabchi v.1</font></a>
 <h3><p dir="rtl">سورسی کاملا فارسی در زمینه تیجی های جدید :)
 <br>
 <h3 align="right"> <strong></strong>
