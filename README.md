@@ -21,7 +21,6 @@ git clone https://github.com/titanteams/tabchi
 cd tabchi
 chmod +x bot
 ./bot install
-* * *
 ```
 # For Auto Launch:
 cd BDReborn
