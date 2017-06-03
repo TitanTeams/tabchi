@@ -10,7 +10,6 @@
 
 | [#!/]help | راهنما  |
 
-You can use "#", "!", or "/" to begin all commands
 
 * * *
 
@@ -47,6 +46,7 @@ cd tabchi
 ./bot autolaunch
 تمام ربات ها راه اندازی میشوند بدون خاموشی#
 ```
+***
 ### اموزش ها
 
 [اموزش کامل نصب](https://telegram.me/titanteams)
